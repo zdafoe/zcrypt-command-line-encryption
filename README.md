@@ -1,4 +1,6 @@
 # zcrypt-command-line-encryption
+If you're worried about downloading a virus just download the c++ source code and compile it yourself, otherwise i included a windows executable version.
+
 This is a project i have been working on for command line encryption
 Zcrypt versions 1 and 2 are completely portable python scripts. Version 1 the least secure and very slow. 
 Version 2 is much more secure and much faster than version 1 but still very slow.

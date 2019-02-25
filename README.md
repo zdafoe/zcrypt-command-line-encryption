@@ -9,4 +9,5 @@ So far i've only gotten version 3 to work on windows when i tried compiling the 
 But all of the c++ and python should be compatible with any system as i did not use any system specific code.
 
 Also for version 2 there is a minimum file size of about 200 bytes
-Version 3 currently has a maximum file size of about 100 Megabytes
+
+  Version 3 can encrypt/decrypt any file size

@@ -32,42 +32,46 @@ int main(int argc,char *argv[]){
         string mode;
         string txt;
         mode=argv[1];
-        
+        string fn;
+        string setnum=argv[2];
         if (mode=="1"){
             ifstream readfile;
-            readfile.open("spliced.tmp",ios::in);
+            readfile.open("spliced.tmp"+setnum,ios::in);
             while (readfile.good())
                 {
                 getline(readfile, txt);
                 text.append(txt);
                 }
             readfile.close();
-            remove("spliced.tmp");
+            fn="spliced.tmp"+setnum;
+            remove(fn.c_str());
             string x =splicer(text);
             ofstream file;
-            file.open("spliced.tmp",ios::out);
+            file.open("spliced.tmp"+setnum,ios::out);
             if (file.is_open()){
                 file <<x;
             }
         }else if (mode=="0"){
             ifstream readfile;
-            readfile.open("spliced.tmp",ios::in);
+            readfile.open("spliced.tmp"+setnum,ios::in);
             while (readfile.good())
                 {
                 getline(readfile, txt);
                 text.append(txt);
                 }
             readfile.close();
-            remove("spliced.tmp");
+            fn="spliced.tmp"+setnum;
+            remove(fn.c_str());
             string x =joiner(text);
             ofstream file;
-            file.open("spliced.tmp",ios::out);
+            file.open("spliced.tmp"+setnum,ios::out);
             if (file.is_open()){
                 file <<x;
             }
             file.close();
         }else if (mode=="2"){
             //make key vector<int> from vector of strings: then convert the first vector if strings into ints in the second vector
+            setnum=argv[6];
             vector<string> stringkey=split(argv[2],'`');
             vector<string>::iterator iter;
             vector<int> key;
@@ -88,19 +92,19 @@ int main(int argc,char *argv[]){
             stream2>>keylength;
             string processnum=argv[5];
             ifstream readfile;
-            readfile.open("spliced.tmp"+processnum,ios::in);
+            readfile.open("spliced.tmp"+processnum+setnum,ios::in);
             while (readfile.good()){
                 getline(readfile, txt);
                 text.append(txt);
                 }
             readfile.close();
-            string fn="spliced.tmp"+processnum;
+            fn="spliced.tmp"+processnum+setnum;
             remove(fn.c_str());
             //string crypto(string text, vector<int> key, int direction, int keylength);
             string Final;
             Final=crypto(text,key,direction,keylength,processnum);
             ofstream file;
-            file.open("spliced.tmp"+processnum,ios::out);
+            file.open("spliced.tmp"+processnum+setnum,ios::out);
             if (file.is_open()){
                 file <<Final;
             }
